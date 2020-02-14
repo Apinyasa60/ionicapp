@@ -1,40 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
-@Component({
-  selector: 'app-about',
-  templateUrl: './about.page.html',
-  styleUrls: ['./about.page.scss'],
-})
-export class AboutPage implements OnInit {
-
-  // การนำข้อมูลจาก Database มาใช้
-  name: string;
-  lastname: string;
-  detail: string;
-
-  constructor() { }
-
-  ngOnInit() {
+  import { Component, OnInit } from '@angular/core';
+  import axios from 'axios';
+  @Component({
+    selector: 'app-about',
+    templateUrl: './about.page.html',
+    styleUrls: ['./about.page.scss'],
+  })
+  export class AboutPage implements OnInit {
 
     // การนำข้อมูลจาก Database มาใช้
-    axios.get('http://localhost/ionicserver/get_profile.php').then((response) => {
+    name: string;
+    lastname: string;
+    detail: string;
 
-      // handle success
-      console.log(response.data);
+    profiles: any;
 
-      this.name = response.data[1].name;
-      this.lastname = response.data[1].lastname;
-      this.detail = response.data[1].detail;
+    constructor() { }
 
-    })
-      .catch((error) => {
+    ngOnInit() {
+      this.loaddata();
+    }
+    delete_data(id: any) {
+      console.log(id);
+      axios.get('http://localhost/ionicserver/delete_profile.php?id=' + id)
+        .then(() => {
+          console.log("ลบข้อมูลเรียบร้อย");
+          this.loaddata();
+        });
+    }
 
-        // handel error
-        console.log(error);
-      })
-      .then(() => {
-        // alway executed
-      });
-  }
+    loaddata() {
+        axios.get('http://localhost/ionicserver/get_profile.php').then((response) => {
 
-}
+          console.log(response.data);
+    
+          this.profiles= response.data;
+          // this.name = response.data[1].name;
+          // this.lastname = response.data[1].lastname;
+          // this.detail = response.data[1].detail;
+          })
+          .catch((error) => {
+            // handel error
+            console.log(error);
+          })
+          .then(() => {
+            // alway executed
+          });
+      }
+    } 
+         
