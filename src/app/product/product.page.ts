@@ -8,15 +8,15 @@ import { AlertController } from '@ionic/angular';
 })
 export class ProductPage implements OnInit {
 
-  titleName:string;
-  productName:string;
-  buttonName:string;
- 
+  titleName: string;
+  productName: string;
+  buttonName: string;
+
   constructor(public alertController: AlertController) { }
 
   ngOnInit() {
-    this.titleName = 'รายการอาหาร'
-    this.productName = 'ข้าวผัดกระเพาหมูหมัก ไข่ดาว'
+    this.titleName = 'รายการอาหาร',
+    this.productName = 'ข้าวผัดกระเพาหมูหมัก ไข่ดาว',
     this.buttonName = 'ราคา'
   }
 
