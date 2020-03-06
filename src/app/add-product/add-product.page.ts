@@ -65,7 +65,7 @@ export class AddProductPage implements OnInit {
   async savesuccess() {
     const alert = await this.alertController.create({
       header: 'สำเร็จ',
-      message: 'บันทึกข้อูลสำเร็จ',
+      message: 'บันทึกข้อมูลสำเร็จ',
       buttons: ['OK']
     });
     await alert.present();
