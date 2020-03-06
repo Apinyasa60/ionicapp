@@ -27,13 +27,13 @@
 
   <ion-content>
     <ion-card>
-      <!-- <ion-card-header>
+      <ion-card-header>
         <ion-card-title>ข้อมูลสมาชิก </ion-card-title>
-      </ion-card-header> -->
+      </ion-card-header>
 
       <ion-card-content>
         <ion-item *ngFor="let data of customers">
-          {{ data.c_id }} {{ data.c_name }} {{data.c_lastname }} 
+          {{ data.c_id }} {{ data.c_name }} {{data.c_lastname }}
           <ion-button color="danger" (click)="delete_data(data.id)">x</ion-button>
         </ion-item>
       </ion-card-content>
